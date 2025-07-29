@@ -1,0 +1,20 @@
+package com.apexon.upskill.mcq;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+public class McqServiceApplication {
+
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(McqServiceApplication.class, args);
+	}
+
+}
