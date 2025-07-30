@@ -72,12 +72,12 @@ public class QuestionServiceImpl implements QuestionService {
                 updatedOptions.add(newOption);
             }
         }
-//        question.getOptions().clear();
+
         question.getOptions().addAll(updatedOptions);
 
         boolean isValid=OptionValidator.isValidOption(question);
         if(!isValid){
-            throw new InvalidOptionException("Atlest one option must be correct");
+            throw new InvalidOptionException("At least one option must be correct");
         }
 
         Question savedQstn = questionRepository.save(question);

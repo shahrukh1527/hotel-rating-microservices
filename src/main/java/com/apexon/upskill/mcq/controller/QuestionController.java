@@ -24,8 +24,8 @@ public class QuestionController {
     }
 
     @GetMapping
-    public List<QuestionResponseDTO> getAll(){
-        return  questionService.getAllQuestions();
+    public ResponseEntity<List<QuestionResponseDTO>> getAll(){
+        return new ResponseEntity<>(questionService.getAllQuestions(),HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
