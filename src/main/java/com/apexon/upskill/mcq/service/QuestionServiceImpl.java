@@ -9,6 +9,7 @@ import com.apexon.upskill.mcq.entity.Options;
 import com.apexon.upskill.mcq.entity.Question;
 import com.apexon.upskill.mcq.entity.QuestionStatus;
 import com.apexon.upskill.mcq.exception.InvalidOptionException;
+import com.apexon.upskill.mcq.exception.InvalidQuestionException;
 import com.apexon.upskill.mcq.exception.ResourceNotFoundException;
 import com.apexon.upskill.mcq.repository.OptionRepository;
 import com.apexon.upskill.mcq.repository.QuestionRepository;
@@ -57,7 +58,9 @@ public class QuestionServiceImpl implements QuestionService {
     public QuestionResponseDTO updateQuestion(Long qstnId, QuestionUpdateDTO dto) {
         Question question = questionRepository.findById(qstnId)
                 .orElseThrow(() -> new ResourceNotFoundException("Question not found with ID: " + qstnId));
-
+        if(question.getStatus().equals(QuestionStatus.ACTIVE)){
+            throw new InvalidQuestionException("Active Questions can not be updated");
+        }
         question.setTitle(dto.getTitle());
         question.setSkillId(dto.getSkillId());
         question.setTopicId(dto.getTopicId());
