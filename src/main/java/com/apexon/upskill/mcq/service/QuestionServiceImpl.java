@@ -1,5 +1,6 @@
 package com.apexon.upskill.mcq.service;
 
+import com.apexon.upskill.mcq.client.TopicServiceClient;
 import com.apexon.upskill.mcq.dto.OptionDTO;
 import com.apexon.upskill.mcq.dto.QuestionRequestDTO;
 import com.apexon.upskill.mcq.dto.QuestionResponseDTO;
@@ -25,11 +26,17 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Autowired
     private QuestionRepository questionRepository;
+
     @Autowired
     private OptionRepository optionRepository;
 
+    @Autowired
+    private TopicServiceClient topicServiceClient;
+
     @Override
     public QuestionResponseDTO saveQuestion(QuestionRequestDTO dto)  {
+        topicServiceClient.validateTopic(dto.getTopicId(),dto.getSkillId());
+
         boolean isValid = OptionValidator.isValidOption(dto);
 
         if (!isValid) {
