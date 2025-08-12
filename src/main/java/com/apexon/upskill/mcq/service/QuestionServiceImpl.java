@@ -1,6 +1,6 @@
 package com.apexon.upskill.mcq.service;
 
-import com.apexon.upskill.mcq.client.TopicServiceClient;
+import com.apexon.upskill.client.TopicServiceClient;
 import com.apexon.upskill.mcq.dto.OptionDTO;
 import com.apexon.upskill.mcq.dto.QuestionRequestDTO;
 import com.apexon.upskill.mcq.dto.QuestionResponseDTO;
@@ -8,13 +8,13 @@ import com.apexon.upskill.mcq.dto.QuestionUpdateDTO;
 import com.apexon.upskill.mcq.entity.Options;
 import com.apexon.upskill.mcq.entity.Question;
 import com.apexon.upskill.mcq.entity.QuestionStatus;
-import com.apexon.upskill.mcq.exception.InvalidOptionException;
-import com.apexon.upskill.mcq.exception.InvalidQuestionException;
-import com.apexon.upskill.mcq.exception.ResourceNotFoundException;
+import com.apexon.upskill.exception.InvalidOptionException;
+import com.apexon.upskill.exception.InvalidQuestionException;
+import com.apexon.upskill.exception.ResourceNotFoundException;
 import com.apexon.upskill.mcq.repository.OptionRepository;
 import com.apexon.upskill.mcq.repository.QuestionRepository;
-import com.apexon.upskill.mcq.util.OptionValidator;
-import com.apexon.upskill.mcq.util.QuestionMapper;
+import com.apexon.upskill.util.OptionValidator;
+import com.apexon.upskill.util.QuestionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
